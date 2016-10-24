@@ -27,7 +27,7 @@ public class Hub extends JavaPlugin {
 	            return;
 	        }
 	        if (!this.getConfig().contains("Options.SpawnCommand")) {
-	            this.getConfig().set("Options.SpawnCommand", (Object)"false");
+	            this.getConfig().set("Options.SpawnCommand", (Object)"true");
 	            this.saveConfig();
 	            return;
 	        }
@@ -43,7 +43,7 @@ public class Hub extends JavaPlugin {
         if (cmd.getName().equalsIgnoreCase("spawn") && this.getConfig().getString("Options.SpawnCommand").equalsIgnoreCase("true")) {
             Player p = (Player)sender;
             if (this.getConfig().getString("Worlds." + p.getWorld().getName()) == null) {
-                Optional newWorld = this.getConfig().getConfigurationSection("Worlds").getKeys(false).stream().findFirst();
+                Optional<String> newWorld = this.getConfig().getConfigurationSection("Worlds").getKeys(false).stream().findFirst();
                 if (newWorld.isPresent()) {
                     String spawn1 = this.getConfig().getString("Worlds." + (String)newWorld.get());
                     Location ploc = this.stringToLocation(spawn1);

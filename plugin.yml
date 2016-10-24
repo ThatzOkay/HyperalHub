@@ -1,11 +1,12 @@
 name: Hub
 version: 0.0.1
 author: mvcxznb
-main:eu.hyperal.mvcxznb.hub
+main: eu.hyperal.mvcxznb.Hub
 description: Hub plugin
 commands:
-    Hyperal:
+    hyperal:
         usage: /<command>
+        description: HHub Command
     spawn:
         usage: /<command>
         description: Teleports player to the spawn

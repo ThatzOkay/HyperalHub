@@ -105,7 +105,7 @@ public class HubItems implements Listener {
         Player p = e.getPlayer();
         if (pl.getConfig().getString("Worlds." + p.getWorld().getName()) == null) {
             try {
-                Optional newWorld = pl.getConfig().getConfigurationSection("Worlds").getKeys(false).stream().findFirst();
+                Optional<String> newWorld = pl.getConfig().getConfigurationSection("Worlds").getKeys(false).stream().findFirst();
                 if (newWorld.isPresent()) {
                     String spawn1 = pl.getConfig().getString("Worlds." + (String)newWorld.get());
                     Location ploc = pl.stringToLocation(spawn1);
@@ -170,13 +170,10 @@ public class HubItems implements Listener {
 			player.closeInventory();
 			player.sendMessage("Sended You to the Skyblock Server");
 			break;
-		
 		default:
 			break;
-		
 		}
 	}
-	
 	public void openGUI(Player player){
 		Inventory inv = Bukkit.createInventory(null, 9 , ChatColor.DARK_PURPLE + "Server Selector");
 		ItemStack Kingdom = new ItemStack(Material.DIAMOND_SWORD);
@@ -195,13 +192,9 @@ public class HubItems implements Listener {
 		
 		SkyblockMeta.setDisplayName(ChatColor.DARK_GREEN + "Skyblock");
 		Skyblock.setItemMeta(SkyblockMeta);
-		
 		inv.setItem(1, Skyblock);
 		inv.setItem(5, Kingdom);
-		inv.setItem(9, KitPVP);
-		
+		inv.setItem(9, KitPVP);	
 		player.openInventory(inv);
-		
 	}
-
 }
